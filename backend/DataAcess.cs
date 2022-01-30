@@ -20,6 +20,9 @@ namespace DataAcess
             _collection = mongoDatabase.GetCollection<ToDoItem>(
                 dbSettings.Value.CollectionName);
         }
+
+        public async Task CreateAsync(ToDoItem item) =>
+                await _collection.InsertOneAsync(item);
     }
 
     public class DbSettings
@@ -37,7 +40,7 @@ namespace DataAcess
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         public string Text { get; set; } = string.Empty;
-        public bool IsDone { get; set; } = false;
-        public DateTime DateTime { get; set; } = DateTime.UtcNow;
+        //public bool IsDone { get; set; } = false;
+        //public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     }
 }

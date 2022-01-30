@@ -1,4 +1,5 @@
 using DataAcess;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,5 +10,9 @@ builder.Services.AddSingleton<ToDoService>();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
+app.MapPost("/add/", async ([FromBody] ToDoItem item, ToDoService service) => { 
+    await service.CreateAsync(item);
+    return Results.Ok();
+} );
 
 app.Run();

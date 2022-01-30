@@ -35,3 +35,4 @@ C:\Users\karma\Documents\gitpractice\ToDoList\backend\obj\Debug\net6.0\backend.d
 C:\Users\karma\Documents\gitpractice\ToDoList\backend\obj\Debug\net6.0\ref\backend.dll
 C:\Users\karma\Documents\gitpractice\ToDoList\backend\obj\Debug\net6.0\backend.pdb
 C:\Users\karma\Documents\gitpractice\ToDoList\backend\obj\Debug\net6.0\backend.genruntimeconfig.cache
+C:\Users\karma\Documents\gitpractice\ToDoList\backend\bin\Debug\net6.0\appsettings.json
