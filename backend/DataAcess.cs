@@ -1,8 +1,3 @@
-using Microsoft.Extensions.Options;
-using MongoDB.Bson;
-using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Driver;
-
 namespace DataAcess
 {
     public class ToDoService
@@ -26,6 +21,9 @@ namespace DataAcess
 
         public async Task<List<ToDoItem>> GetAsync() =>
             await _collection.Find(_ => true).ToListAsync();
+
+        public async Task<ToDoItem?> GetAsync(string id) =>
+            await _collection.Find(x => x.Id == id).FirstOrDefaultAsync();
     }
 
     public class DbSettings
