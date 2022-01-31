@@ -6,12 +6,14 @@ builder.Services.AddSingleton<ToDoService>();
 
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello World!");
-app.MapGet("/all", async (ToDoService service) => await service.GetAsync());
-app.MapGet("/one/{id}", async (string id, ToDoService service) => await service.GetAsync(id));
-app.MapPost("/add", async ([FromBody] ToDoItem item, ToDoService service) => { 
-    await service.CreateAsync(item);
-    return Results.Ok();
-} );
+app.MapGet("/", async (ToDoService service) => await service.GetAsync());
+app.MapGet("/{id:length(24)}", async (string id, ToDoService service) => await service.GetAsync(id));
+app.MapPost("/", async ([FromBody] ToDoItem item, ToDoService service) => { 
+    if (item.Id == null)
+        await service.CreateAsync(item);
+    else await service.UpdateAsync(item);
+    return Results.Created($"/one/{item.Id}", item);
+});
+app.MapDelete("/{id:length(24)}", async (string id, ToDoService service) => await service.RemoveAsync(id));
 
 app.Run();
