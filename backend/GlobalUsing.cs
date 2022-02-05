@@ -2,6 +2,11 @@
 global using MongoDB.Bson;
 global using MongoDB.Bson.Serialization.Attributes;
 global using MongoDB.Driver;
-global using DataAcess;
 global using Microsoft.AspNetCore.Mvc;
-global using Models;
+global using System.ComponentModel.DataAnnotations;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;
+global using Microsoft.AspNetCore.Authorization;

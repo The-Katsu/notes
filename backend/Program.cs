@@ -1,29 +1,47 @@
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<DbSettings>(
-    builder.Configuration.GetSection("ToDoDatabase"));
-builder.Services.AddSingleton<ToDoService>();
+RegisterServices(builder.Services);
 
 var app = builder.Build();
 
-app.MapGet("/", async (ToDoService service) => 
-    await service.GetAsync());
-
-app.MapGet("/{id:length(24)}", async (string id, ToDoService service) => 
-    await service.GetAsync(id) is ToDoItem item 
-    ? Results.Ok(item)
-    : Results.NotFound());
-
-app.MapPost("/", async ([FromBody] ToDoItem item, ToDoService service) => { 
-    if (item.Id == null)
-        await service.CreateAsync(item);
-    else await service.UpdateAsync(item);
-    return Results.Created($"/{item.Id}", item);
-});
-
-app.MapDelete("/{id:length(24)}", async (string id, ToDoService service) => {
-    await service.RemoveAsync(id);
-    return Results.NoContent();
-});
+Configure(app);
 
 app.Run();
+
+void RegisterServices(IServiceCollection services)
+{
+    services.Configure<DbSettings>(
+    builder.Configuration.GetSection("ToDoDatabase"));
+
+    services.AddSingleton<ToDoService>();
+    services.AddSingleton<UserService>();
+    services.AddSingleton<TokenService>();
+
+    services.AddAuthorization();
+    services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new()
+            {
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidateLifetime = true,
+                ValidateIssuerSigningKey = true,
+                ValidIssuer = builder.Configuration["Jwt:Issuer"],
+                ValidAudience = builder.Configuration["Jwt:Audience"],
+                IssuerSigningKey = new SymmetricSecurityKey(
+                    Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+            };
+        });
+}
+
+void Configure(WebApplication app)
+{
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    new UserApi().Register(app);
+    new ToDoApi().Register(app);
+
+    app.UseHttpsRedirection();
+}

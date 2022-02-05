@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karma\\Documents\\gitpractice\\ToDoList\\backend\\backend.csproj": {}
+    "C:\\Users\\karma\\Documents\\gitpractice\\notes\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karma\\Documents\\gitpractice\\ToDoList\\backend\\backend.csproj": {
+    "C:\\Users\\karma\\Documents\\gitpractice\\notes\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karma\\Documents\\gitpractice\\ToDoList\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\karma\\Documents\\gitpractice\\notes\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\karma\\Documents\\gitpractice\\ToDoList\\backend\\backend.csproj",
+        "projectPath": "C:\\Users\\karma\\Documents\\gitpractice\\notes\\backend\\backend.csproj",
         "packagesPath": "C:\\Users\\karma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karma\\Documents\\gitpractice\\ToDoList\\backend\\obj\\",
+        "outputPath": "C:\\Users\\karma\\Documents\\gitpractice\\notes\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\karma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.15.1, )"
+            },
             "MongoDB.Bson": {
               "target": "Package",
               "version": "[2.14.1, )"
@@ -47,6 +55,10 @@
             "MongoDB.Driver": {
               "target": "Package",
               "version": "[2.14.1, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.15.1, )"
             }
           },
           "imports": [
