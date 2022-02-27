@@ -1,4 +1,4 @@
-public class ToDoItem
+public class Note
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]

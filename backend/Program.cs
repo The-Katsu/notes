@@ -11,9 +11,9 @@ app.Run();
 void RegisterServices(IServiceCollection services)
 {
     services.Configure<DbSettings>(
-    builder.Configuration.GetSection("ToDoDatabase"));
+    builder.Configuration.GetSection("NotesDatabase"));
 
-    services.AddSingleton<ToDoService>();
+    services.AddSingleton<NotesService>();
     services.AddSingleton<UserService>();
     services.AddSingleton<TokenService>();
 
@@ -41,7 +41,7 @@ void Configure(WebApplication app)
     app.UseAuthorization();
 
     new UserApi().Register(app);
-    new ToDoApi().Register(app);
+    new NoteApi().Register(app);
 
     app.UseHttpsRedirection();
 }
