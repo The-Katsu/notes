@@ -254,3 +254,5 @@ Get one
 Delete one  
 ![Delete](https://clck.ru/dBq6z)  
 ![AfterDelete](https://clck.ru/dBqSU)  
+
+---
