@@ -242,15 +242,15 @@ info: Microsoft.Hosting.Lifetime[0]
 ```
 Using Postman or Thunder Client  
 Authenticate  
-![Login](https://clck.ru/dBhoN)  
+![Login](https://clck.ru/dBoZp)  
 Place token here  
-![Token](https://clck.ru/dBitm)  
+![Token](https://clck.ru/dBp2D)  
 Add note  
-![AddNote](https://clck.ru/dBjFc)  
+![AddNote](https://clck.ru/dBpLB)  
 Add more notes and get list of them  
-![List](https://clck.ru/dBjn6)  
+![List](https://clck.ru/dBpe8)  
 Get one  
-![Get](https://clck.ru/dBkJy)  
+![Get](https://clck.ru/dBps6)  
 Delete one  
-![Delete](https://clck.ru/dBkhD)  
-![AfterDelete](https://clck.ru/dBm38)  
+![Delete](https://clck.ru/dBq6z)  
+![AfterDelete](https://clck.ru/dBqSU)  
