@@ -42,6 +42,7 @@ void Configure(WebApplication app)
 
     new UserApi().Register(app);
     new NoteApi().Register(app);
+    app.MapGet("/1", () => "Hello from api");
 
     app.UseHttpsRedirection();
 }
