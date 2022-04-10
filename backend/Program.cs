@@ -10,6 +10,13 @@ app.Run();
 
 void RegisterServices(IServiceCollection services)
 {
+    services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+    {
+        builder.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+    }));
+
     services.Configure<DbSettings>(
     builder.Configuration.GetSection("NotesDatabase"));
 
@@ -37,6 +44,8 @@ void RegisterServices(IServiceCollection services)
 
 void Configure(WebApplication app)
 {
+    app.UseCors("MyPolicy");
+
     app.UseAuthentication();
     app.UseAuthorization();
 
